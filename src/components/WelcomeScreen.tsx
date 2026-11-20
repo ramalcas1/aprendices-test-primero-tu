@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, Clock, Compass, Sparkles } from 'lucide-react';
-import { useSession } from '../lib/session';
 
 /**
  * Ilustración de portada: acuarela suave de un adulto mirando con ternura
@@ -62,9 +61,7 @@ const steps = [
 ];
 
 export default function WelcomeScreen() {
-  const { user, demo } = useSession();
   const reduce = useReducedMotion();
-  const firstName = user?.name?.trim().split(/\s+/)[0] ?? '';
 
   return (
     <main className="min-h-screen w-full bg-[#FAF3E6] px-4 py-8 dark:bg-[#1F1B16]">
@@ -80,14 +77,6 @@ export default function WelcomeScreen() {
             <p className="font-[Georgia,'Times_New_Roman',serif] text-[13px] font-semibold tracking-[0.18em] text-[#A97E29] uppercase dark:text-[#D9B25F]">
               Aprendices · Primero Tú
             </p>
-            {firstName ? (
-              <p
-                className="max-w-[45%] truncate text-[13px] text-[#6B5D4C] dark:text-[#C4B7A4]"
-                title={`Hola, ${firstName}`}
-              >
-                Hola, {firstName}
-              </p>
-            ) : null}
           </header>
 
           {/* Héroe */}
@@ -162,12 +151,6 @@ export default function WelcomeScreen() {
           <p className="px-2 text-center font-[Georgia,'Times_New_Roman',serif] text-[18px] leading-[1.4] font-bold text-[#B2572B] italic dark:text-[#D98A5F]">
             No vienes a ser perfecto. Vienes a ser aprendiz.
           </p>
-
-          {demo ? (
-            <p className="text-center text-[13px] leading-[1.5] text-[#6B5D4C] dark:text-[#C4B7A4]">
-              Modo demo: tu cuenta y tus datos viven solo en este navegador.
-            </p>
-          ) : null}
         </motion.div>
       </div>
     </main>

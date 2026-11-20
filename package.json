@@ -27,7 +27,6 @@
     "react-router-dom": "7.18.1",
     "@tanstack/react-query": "5.101.4",
     "zustand": "5.0.14",
-    "@supabase/supabase-js": "2.110.8",
     "workbox-window": "7.4.1"
   },
   "devDependencies": {

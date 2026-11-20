@@ -4,7 +4,6 @@ import { Link, useLocation, useParams } from 'react-router-dom';
 import { AlertCircle, CheckCircle2, ExternalLink, MessageCircle, RotateCcw } from 'lucide-react';
 import { toast } from 'sonner';
 import { submitLead } from '../lib/leads';
-import { useSession } from '../lib/session';
 
 // Cada estación puede llevar su propia frase ancla (si no la tiene, se usa la frase genérica de la marca)
 // y su propia ilustración (hoy solo la Estación 10 y la Estación 11 tienen una).
@@ -141,23 +140,9 @@ function StationIllustration({ src, alt }: { src: string; alt: string }) {
   );
 }
 
-function Skeleton() {
-  return (
-    <Shell>
-      <div className="mt-6 animate-pulse space-y-6" aria-hidden="true">
-        <div className="h-4 w-44 rounded-full bg-[#E4D8C2] dark:bg-[#3D3428]" />
-        <div className="h-52 rounded-[28px] bg-[#FFFDF8] dark:bg-[#2A231A]" />
-        <div className="h-24 rounded-[28px] bg-[#FFFDF8] dark:bg-[#2A231A]" />
-        <div className="h-64 rounded-[28px] bg-[#FFFDF8] dark:bg-[#2A231A]" />
-      </div>
-    </Shell>
-  );
-}
-
 export default function ResultScreen() {
   const { perfil } = useParams();
   const location = useLocation();
-  const { loading, demo } = useSession();
 
   const respuestas = (location.state as { answers?: string[] } | null)?.answers;
 
@@ -245,8 +230,6 @@ export default function ResultScreen() {
       </Link>
     );
   }
-
-  if (loading) return <Skeleton />;
 
   if (!estacion) {
     return (
@@ -345,13 +328,6 @@ export default function ResultScreen() {
             <h2 className="font-serif text-xl font-bold leading-snug">
               Déjanos tu correo y te enviamos tu resultado + un regalo
             </h2>
-            {demo ? (
-              <p className={`mt-3 flex items-start gap-2 text-sm ${MUTED}`}>
-                <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" strokeWidth={1.75} aria-hidden="true" />
-                Modo demo: los datos no se guardan en ningún servidor todavía.
-              </p>
-            ) : null}
-
             <label htmlFor="lead-nombre" className="mt-5 block text-sm font-semibold">
               Nombre
             </label>
