@@ -79,7 +79,7 @@ const ESTACIONES: Record<
 };
 
 const FRASE_ANCLA = 'No vienes a ser perfecto. Vienes a ser aprendiz.';
-const ENLACE_HOTMART = 'https://hotmart.com';
+const ENLACE_HOTMART = 'https://pay.hotmart.com/F108620230F';
 const ENLACE_WHATSAPP = 'https://wa.me/573053708446';
 
 function calcularGanadora(respuestas: string[]): string | null {

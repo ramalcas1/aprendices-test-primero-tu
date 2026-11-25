@@ -44,7 +44,7 @@ El enlace del Web App vive en la constante `APPS_SCRIPT_ENDPOINT` de `/src/lib/l
 
 ## Configuración Hotmart
 
-El enlace de compra vive en la constante `ENLACE_HOTMART` de `/src/components/ResultScreen.tsx`. Sustitúyelo por la URL de checkout de Hotmart (Hotmart → Producto → Enlaces de venta) cuando la oferta esté publicada; no construyas la URL a mano.
+El enlace de compra vive en la constante `ENLACE_HOTMART` de `/src/components/ResultScreen.tsx` y apunta al checkout real del producto: `https://pay.hotmart.com/F108620230F`. Para cambiarlo, usa la URL que da Hotmart (Hotmart → Producto → Enlaces de venta); no construyas la URL a mano.
 
 ## Variables de entorno
 
